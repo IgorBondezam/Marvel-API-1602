@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const bookSchema = new Schema(
+const characterSchema = new Schema(
 {
     id: Number,
     name: String,
@@ -19,6 +19,6 @@ const bookSchema = new Schema(
     }
 }, {
     timestamps: true
-})
+});
 
-export default model('Character', bookSchema);
+export default model('Character', characterSchema);
