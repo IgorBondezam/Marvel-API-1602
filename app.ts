@@ -21,7 +21,7 @@ class App {
     public async database() {
         try {
             mongoose.set("strictQuery", true);
-            await mongoose.connect('mongodb://0.0.0.0:27017/marvel-ibm');
+            await mongoose.connect('mongodb://0.0.0.0:27017/marvel');
             console.log("Connect database sucess");
         } catch (error) {
             console.error('Cannot connect to database, error:', error);
