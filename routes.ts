@@ -7,7 +7,7 @@ routes.get('/hello', characterController.helloWorld);
 
 /**
  * @swagger
- * /hello/oi:
+ * /hello:
  *   get:
  *     summary: Teste swagger
  *     tags: [Tests]

@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 import { routes } from './routes';
 
 class App {
-    public express: express.Application
+    public express: express.Application;
     
     public constructor() {
         this.express = express();

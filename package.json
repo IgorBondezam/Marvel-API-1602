@@ -26,7 +26,7 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "ts-node ./main",
+    "start": "docker-compose up ts-node ./main",
     "test": "jest"
   },
   "keywords": [],
