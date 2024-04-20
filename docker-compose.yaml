@@ -1,11 +1,15 @@
-version: "3.9"
+version: '3.4'
 services:
   db:
-    image: postgres
-    container_name: banco_postegres
-    ports:
-      - 5432:5432
+    image: mongo:latest
     environment:
-      POSTGRES_USER: kanban
-      POSTGRES_DB: kanban
-      POSTGRES_PASSWORD: kanban
+      - ./mongo.env
+  # node:
+  #   depends_on:
+  #     - db
+  #   image: node:latest
+  #   volumes:
+  #     - ./app:./
+  #   expose:
+  #     - 8080:8080
+  #   command: npm start
