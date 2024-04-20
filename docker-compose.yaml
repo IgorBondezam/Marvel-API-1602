@@ -1,0 +1,15 @@
+version: '3.4'
+services:
+  db:
+    image: mongo:latest
+    environment:
+      - ./mongo.env
+  # node:
+  #   depends_on:
+  #     - db
+  #   image: node:latest
+  #   volumes:
+  #     - ./app:./
+  #   expose:
+  #     - 8080:8080
+  #   command: npm start
