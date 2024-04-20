@@ -22,6 +22,7 @@ class App {
         try {
             mongoose.set("strictQuery", true);
             await mongoose.connect(`mongodb://${process.env.URL_DATABASE}`);
+
             console.log("Connect database sucess");
         } catch (error) {
             console.error('Cannot connect to database, error:', error);
