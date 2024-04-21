@@ -19,7 +19,8 @@ const creatorSchema = new Schema(
         thumbnail: {
           path: String,
           extension: String
-        }
+        },
+        editable: Boolean
       }, {
     timestamps: true
 });
