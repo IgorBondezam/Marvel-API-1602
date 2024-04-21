@@ -1,6 +1,7 @@
+import { Creator } from '../domain/creator.domain';
 import creatorSchema from '../schema/creator.schema'
 
-export class CreatorService{
+export class CreatorService {
     public async create(creator: any) {
         const createdCreator = await creatorSchema.create(creator);
 
@@ -31,9 +32,10 @@ export class CreatorService{
         return updatedCreator;
     }
 
-    public async delete(id: string) {
+    public async delete(id: string): Promise<any> {
+        const creator = await creatorSchema.findById(id);
         await creatorSchema.findByIdAndDelete(id);
-        return 'Livro Removido com Sucesso';
+        return creator;
     }
 }
 
