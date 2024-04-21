@@ -7,16 +7,11 @@ const characterSchema = new Schema(
     description: String,
     modified: Date,
     resourceURI: String,
-    urls: [
-        {
+    urls: Array<{
         type: String,
         url: String
-        }
-    ],
-    thumbnail: {
-        path: String,
-        extension: String
-    },
+        }>,
+    thumbnail: String,
     editable: Boolean
 }, {
     timestamps: true

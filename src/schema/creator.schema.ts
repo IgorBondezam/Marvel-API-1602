@@ -10,12 +10,12 @@ const creatorSchema = new Schema(
         fullName: String,
         modified: Date,
         resourceURI: String,
-        urls: [
+        urls: Array<
           {
             type: String,
             url: String
           }
-        ],
+        >,
         thumbnail: {
           path: String,
           extension: String

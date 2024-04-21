@@ -15,42 +15,42 @@ const comicSchema = new Schema(
         ean: String,
         issn: String,
         format: String,
-        textObjects: [
+        textObjects: Array<
             {
                 type: String,
                 language: String,
                 text: String
             }
-        ],
+        >,
         resourceURI: String,
-        urls: [
+        urls: Array<
             {
                 type: String,
                 url: String
             }
-        ],
-        dates: [
+        >,
+        dates: Array<
             {
                 type: String,
                 date: Date
             }
-        ],
-        prices: [
+        >,
+        prices: Array<
             {
                 type: String,
                 price: Number
             }
-        ],
+        >,
         thumbnail: {
             path: String,
             extension: String
         },
-        images: [
+        images: Array<
             {
                 path: String,
                 extension: String
             }
-        ],
+        >,
         editable: Boolean
     }, {
     timestamps: true

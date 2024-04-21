@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import characterService from "../service/character.service";
+import { Character } from "../domain/character.domain";
 
 class CharacterController{
 
@@ -14,7 +15,7 @@ class CharacterController{
     }
 
     public async createCharacter(req: Request, res: Response): Promise<void>{
-        res.json(await characterService.create(req.body))
+        res.json(await characterService.create(new Character(req.body.id, req.body.name, req.body.description, req.body.modified, req.body.resourceURI, req.body.urls, req.body.thumbnail, true)))
         res.status(201).send();
     }
 
@@ -27,7 +28,6 @@ class CharacterController{
         res.json(await characterService.delete(req.params.id));
         res.status(204).send();
     }
-
 }
 
 export default new CharacterController();

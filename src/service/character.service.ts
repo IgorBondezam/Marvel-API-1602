@@ -4,7 +4,6 @@ import characterSchema from '../schema/character.schema'
 class CharacterService{
 
     async create(character: Character) {
-        character.editable = true;
         const createdCharacter = await characterSchema.create(character);
         return createdCharacter;
     }
