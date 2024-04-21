@@ -1,25 +1,25 @@
-import characterModel from '../schema/character.schema'
+import characterSchema from '../schema/character.schema'
 
 class CharacterService{
 
-    async create(character: any) {
-        const createdCharacter = await characterModel.create(character);
+    public async create(character: any) {
+        const createdCharacter = await characterSchema.create(character);
 
         return createdCharacter;
     }
 
-    async findById(id: string) {
-        const findedCharacter = await characterModel.findById(id);
+    public async findById(id: string) {
+        const findedCharacter = await characterSchema.findById(id);
         return findedCharacter;
     }
 
-    async findAll() {
-        const findedCharacters = await characterModel.find();
+    public async findAll() {
+        const findedCharacters = await characterSchema.find();
         return findedCharacters;
     }
 
-    async update(id: string, character: any) {
-        const updatedCharacter = await characterModel.findByIdAndUpdate(id, {
+    public async update(id: string, character: any) {
+        const updatedCharacter = await characterSchema.findByIdAndUpdate(id, {
             id: id,
             name: character.name,
             description: character.description,
@@ -32,8 +32,8 @@ class CharacterService{
         return updatedCharacter;
     }
 
-    async delete(id: string) {
-        await characterModel.findByIdAndDelete(id);
+    public async delete(id: string) {
+        await characterSchema.findByIdAndDelete(id);
         return 'Livro Removido com Sucesso';
     }
 }

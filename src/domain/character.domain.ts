@@ -5,7 +5,7 @@ export class Character {
     modified: Date;
     resourceURI: string;
     urls: { type: string, url: string }[];
-    thumbnail: { path: string, extension: string };
+    thumbnail: string;
     editable: boolean;
 
     constructor(
@@ -24,7 +24,7 @@ export class Character {
         this.modified = modified;
         this.resourceURI = resourceURI;
         this.urls = urls;
-        this.thumbnail = thumbnail;
+        this.thumbnail = `${thumbnail.path}.${thumbnail.extension}`;
         this.editable = editable;
     }
 

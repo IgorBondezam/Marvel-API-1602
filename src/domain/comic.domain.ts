@@ -18,7 +18,7 @@ export class Comic{
     dates: { type: string, date: Date }[];
     prices: { type: string, price: number }[];
     thumbnail: { path: string, extension: string };
-    images: { path: string, extension: string }[];
+    images: string[];
     editable: boolean;
 
     constructor(
@@ -63,7 +63,7 @@ export class Comic{
         this.dates = dates;
         this.prices = prices;
         this.thumbnail = thumbnail;
-        this.images = images;
+        this.images = images.map(i => `${i.path}.${i.extension}`);
         this.editable = editable;
     }
     

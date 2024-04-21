@@ -50,7 +50,8 @@ const comicSchema = new Schema(
                 path: String,
                 extension: String
             }
-        ]
+        ],
+        editable: Boolean
     }, {
     timestamps: true
 });
