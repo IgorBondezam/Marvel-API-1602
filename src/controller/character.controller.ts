@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
-import marvelService from "../service/marvel.service";
+import characterService from "../service/character.service";
 
 class CharacterController{
 
-    helloWorld(req: Request, res: Response){
-        return res.json('hello World');
+    public async findAllCharacters(req: Request, res: Response): Promise<void>{
+        res.json(await characterService.findAll());
+        res.status(200).send();
     }
 
 }

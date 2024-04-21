@@ -1,10 +1,11 @@
+import { Character } from '../domain/character.domain';
 import characterModel from '../schema/character.schema'
 
 class CharacterService{
 
-    async create(character: any) {
+    async create(character: Character) {
+        character.editable = true;
         const createdCharacter = await characterModel.create(character);
-
         return createdCharacter;
     }
 
@@ -18,7 +19,8 @@ class CharacterService{
         return findedCharacters;
     }
 
-    async update(id: string, character: any) {
+    async update(id: string, character: Character) {
+        character.editable = true;
         const updatedCharacter = await characterModel.findByIdAndUpdate(id, {
             id: id,
             name: character.name,

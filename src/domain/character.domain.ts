@@ -1,12 +1,12 @@
 export class Character {
-    id: number;
-    name: string;
-    description: string;
-    modified: Date;
-    resourceURI: string;
-    urls: { type: string, url: string }[];
-    thumbnail: { path: string, extension: string };
-    editable: boolean;
+    public id: number;
+    public name: string;
+    public description: string;
+    public modified: Date;
+    public resourceURI: string;
+    public urls: { type: string, url: string }[];
+    public thumbnail: { path: string, extension: string };
+    public editable: boolean;
 
     constructor(
         id: number,
