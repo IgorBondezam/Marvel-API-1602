@@ -21,7 +21,7 @@
   "name": "api-marvel",
   "description": "API Marvel - Desafio Profissional",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.ts",
   "directories": {
     "test": "tests"
   },

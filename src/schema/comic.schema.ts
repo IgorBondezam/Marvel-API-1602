@@ -41,10 +41,7 @@ const comicSchema = new Schema(
                 price: Number
             }
         >,
-        thumbnail: {
-            path: String,
-            extension: String
-        },
+        thumbnail: String,
         images: Array<
             {
                 path: String,

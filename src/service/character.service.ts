@@ -1,19 +1,23 @@
+import mongoose from 'mongoose';
 import { Character } from '../domain/character.domain';
 import characterSchema from '../schema/character.schema'
 
 class CharacterService{
 
-    async create(character: Character) {
-        const createdCharacter = await characterSchema.create(character);
+    public async create(character: Character): Promise<Character> {
+        const createdCharacter: Character = await characterSchema.create(character);
         return createdCharacter;
     }
 
-    public async findById(id: string) {
-        const findedCharacter = await characterSchema.findById(id);
+    public async findById(id: string): Promise<Character>{
+        if(!mongoose.Types.ObjectId.isValid(id)){
+            throw new Error('Tipo de id inválido');
+        }
+        const findedCharacter: Character = await characterSchema.findById(id);
         return findedCharacter;
     }
 
-    public async findAll() {
+    public async findAll(): Promise<Character[]> {
         const findedCharacters = await characterSchema.find();
         return findedCharacters;
     }
@@ -27,7 +31,8 @@ class CharacterService{
             modified: new Date(),
             resourceURI: character.resourceURI,
             urls: character.urls,
-            thumbnail: character.thumbnail
+            thumbnail: character.thumbnail,
+            editable: character.editable
         }, { new: true });
 
         return updatedCharacter;
@@ -35,7 +40,7 @@ class CharacterService{
 
     public async delete(id: string) {
         await characterSchema.findByIdAndDelete(id);
-        return 'Livro Removido com Sucesso';
+        return 'Character Removido com Sucesso';
     }
 }
 
