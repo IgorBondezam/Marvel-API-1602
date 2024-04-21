@@ -4,6 +4,7 @@ import characterController from './src/controller/character.controller'
 const routes = Router()
 routes.get('/health-check');
 routes.get('/hello', characterController.helloWorld);
+routes.get('/characters', characterController.getCharacters);
 
 /**
  * @swagger
