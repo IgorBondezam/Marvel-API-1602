@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const comics = new Schema(
+const comicSchema = new Schema(
     {
         id: Number,
         digitalId: Number,
@@ -55,4 +55,4 @@ const comics = new Schema(
     timestamps: true
 });
 
-export default model('Comics', comics);
+export default model('Comic', comicSchema);
