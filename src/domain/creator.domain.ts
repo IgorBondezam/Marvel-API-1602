@@ -9,6 +9,7 @@ export class Creator {
     resourceURI: string;
     urls: { type: string, url: string }[];
     thumbnail: { path: string, extension: string };
+    editable: boolean;
 
     constructor(
         id: number,
@@ -20,7 +21,8 @@ export class Creator {
         modified: Date,
         resourceURI: string,
         urls: { type: string, url: string }[],
-        thumbnail: { path: string, extension: string }
+        thumbnail: { path: string, extension: string },
+        editable: boolean
     ) {
         this.id = id;
         this.firstName = firstName;
@@ -32,5 +34,6 @@ export class Creator {
         this.resourceURI = resourceURI;
         this.urls = urls;
         this.thumbnail = thumbnail;
+        this.editable = editable;
     }
 }

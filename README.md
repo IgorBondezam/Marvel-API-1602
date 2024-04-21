@@ -1,8 +1,6 @@
 Id da série - 489
 Nome série 1602 (2003 - 2004)
 
-
-
 Avaliação - Sagas do Universo Marvel
 
 O Universo Marvel, repleto de super-heróis, vilões e histórias épicas, tem sido uma fonte inesgotável de entretenimento e inspiração. Com a Marvel API, você tem acesso a uma riqueza de informações sobre este universo, desde personagens até as sagas que definem eras.

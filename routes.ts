@@ -1,12 +1,13 @@
 import { Router } from 'express'
 import characterController from './src/controller/character.controller'
+import marvelController from './src/controller/marvel.controller'
 
 const routes = Router()
 routes.get('/health-check');
-routes.get('/hello', characterController.helloWorld);
-routes.get('/characters', characterController.getCharacters);
-routes.get('/creators', characterController.getCreators);
-routes.get('/comics', characterController.getComics);
+routes.get('/hello', marvelController.helloWorld);
+routes.get('/characters', marvelController.getCharacters);
+routes.get('/creators', marvelController.getCreators);
+routes.get('/comics', marvelController.getComics);
 
 /**
  * @swagger

@@ -19,6 +19,7 @@ export class Comic{
     prices: { type: string, price: number }[];
     thumbnail: { path: string, extension: string };
     images: { path: string, extension: string }[];
+    editable: boolean;
 
     constructor(
         id: number,
@@ -40,7 +41,8 @@ export class Comic{
         dates: { type: string, date: Date }[],
         prices: { type: string, price: number }[],
         thumbnail: { path: string, extension: string },
-        images: { path: string, extension: string }[]
+        images: { path: string, extension: string }[],
+        editable: boolean
     ) {
         this.id = id;
         this.digitalId = digitalId;
@@ -62,6 +64,7 @@ export class Comic{
         this.prices = prices;
         this.thumbnail = thumbnail;
         this.images = images;
+        this.editable = editable;
     }
     
 

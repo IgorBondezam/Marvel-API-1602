@@ -6,6 +6,7 @@ export class Character {
     resourceURI: string;
     urls: { type: string, url: string }[];
     thumbnail: { path: string, extension: string };
+    editable: boolean;
 
     constructor(
         id: number,
@@ -14,7 +15,8 @@ export class Character {
         modified: Date,
         resourceURI: string,
         urls: { type: string, url: string }[],
-        thumbnail: { path: string, extension: string }
+        thumbnail: { path: string, extension: string },
+        editable: boolean
     ) {
         this.id = id;
         this.name = name;
@@ -23,5 +25,8 @@ export class Character {
         this.resourceURI = resourceURI;
         this.urls = urls;
         this.thumbnail = thumbnail;
+        this.editable = editable;
     }
+
+
 }
