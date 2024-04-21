@@ -11,7 +11,7 @@ class CharacterController{
     public async findByIdCharacter(req: Request, res: Response): Promise<void>{
         res.json(await characterService.findById(req.params.id));
         res.status(200).send();
-    
+    }
 
     public async createCharacter(req: Request, res: Response): Promise<void>{
         res.json(await characterService.create(req.body))
