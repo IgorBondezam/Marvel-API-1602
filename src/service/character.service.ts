@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { Character } from '../domain/character.domain';
 import characterSchema from '../schema/character.schema'
+import { validarId } from './validators/type-id.validator';
 
 class CharacterService{
 
@@ -10,9 +11,7 @@ class CharacterService{
     }
 
     public async findById(id: string): Promise<Character>{
-        if(!mongoose.Types.ObjectId.isValid(id)){
-            throw new Error('Tipo de id inválido');
-        }
+        validarId(id);
         const findedCharacter: Character = await characterSchema.findById(id);
         return findedCharacter;
     }
@@ -22,7 +21,8 @@ class CharacterService{
         return findedCharacters;
     }
 
-    async update(id: string, character: Character) {
+    public async update(id: string, character: Character) {
+        validarId(id);
         character.editable = true;
         const updatedCharacter = await characterSchema.findByIdAndUpdate(id, {
             id: id,
@@ -39,6 +39,7 @@ class CharacterService{
     }
 
     public async delete(id: string) {
+        validarId(id);
         await characterSchema.findByIdAndDelete(id);
         return 'Character Removido com Sucesso';
     }

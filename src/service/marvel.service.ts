@@ -20,6 +20,18 @@ class MarvelService{
     public async getCreators(): Promise<Creator[]>{
         return await this.marvelRepository.getCreators();
     }
+
+    public async getCharactersById(id: number): Promise<Character>{
+        return (await this.marvelRepository.getCharactersById(id))[0];
+    }
+
+    public async getComicsById(id: number): Promise<Comic>{
+        return (await this.marvelRepository.getComicsById(id))[0];
+    }
+
+    public async getCreatorsById(id: number): Promise<Creator>{
+        return (await this.marvelRepository.getCreatorsById(id))[0];
+    }
 }
 
 export default new MarvelService();

@@ -7,7 +7,7 @@ class ComicConverter{
         if(!entity){
             return null;
         }
-        let res: ComicRes;
+        let res: ComicRes = new ComicRes;
         res.id = entity.id;
         res.digitalId = entity.digitalId;
         res.title = entity.title;
@@ -36,7 +36,7 @@ class ComicConverter{
         if(!req){
             return null;
         }
-        let comic: Comic;
+        let comic: Comic = new Comic;
         comic.id = req.id;
         comic.digitalId = req.digitalId;
         comic.title = req.title;

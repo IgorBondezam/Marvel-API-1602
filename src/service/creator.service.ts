@@ -1,5 +1,6 @@
 import { Creator } from '../domain/creator.domain';
 import creatorSchema from '../schema/creator.schema'
+import { validarId } from './validators/type-id.validator';
 
 export class CreatorService {
     public async create(creator: any) {
@@ -9,6 +10,7 @@ export class CreatorService {
     }
 
     public async findById(id: string) {
+        validarId(id);
         const findedCreator = await creatorSchema.findById(id);
         return findedCreator;
     }
@@ -19,6 +21,7 @@ export class CreatorService {
     }
 
     public async update(id: string, creator: any) {
+        validarId(id);
         const updatedCreator = await creatorSchema.findByIdAndUpdate(id, {
             id: id,
             name: creator.name,
@@ -33,6 +36,7 @@ export class CreatorService {
     }
 
     public async delete(id: string): Promise<string> {
+        validarId(id);
         await creatorSchema.findByIdAndDelete(id);
         return 'Creator Removido com Sucesso';
     }

@@ -1,5 +1,6 @@
 import { Comic } from '../domain/comic.domain';
 import  comicSchema from '../schema/comic.schema';
+import { validarId } from './validators/type-id.validator';
 
 class ComicService{
 
@@ -9,6 +10,7 @@ class ComicService{
     }
 
     public async findById(id: string) {
+        validarId(id);
         const findedComic = await comicSchema.findById(id);
         return findedComic;
     }
@@ -19,6 +21,7 @@ class ComicService{
     }
 
     public async update(id: string, comic: Comic) {
+        validarId(id);
         comic.editable = true;
         const updatedComic = await comicSchema.findByIdAndUpdate(id, {
             id: id,
@@ -48,6 +51,7 @@ class ComicService{
     }
 
     public async delete(id: string) {
+        validarId(id);
         await comicSchema.findByIdAndDelete(id);
         return 'Comic Removido com Sucesso';
     }

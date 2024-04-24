@@ -24,7 +24,7 @@ export class Character {
         this.modified = modified;
         this.resourceURI = resourceURI;
         this.urls = urls;
-        this.thumbnail = `${thumbnail.path}.${thumbnail.extension}`;
+        this.thumbnail = `${thumbnail?.path}.${thumbnail?.extension}`;
         this.editable = editable;
     }
 }
