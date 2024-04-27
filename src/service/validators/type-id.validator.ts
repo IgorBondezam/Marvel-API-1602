@@ -1,7 +1,5 @@
-import mongoose from "mongoose";
-
-export function validarId(id: string): void{
-    if(!mongoose.Types.ObjectId.isValid(id)){
+export function validarId(id: number): void{
+    if(!(typeof(id) === 'number')){
         throw new Error('Tipo de id inválido');
     }
 }

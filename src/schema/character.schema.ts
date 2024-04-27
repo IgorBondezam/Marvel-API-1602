@@ -2,7 +2,10 @@ import { Schema, model } from 'mongoose';
 
 const characterSchema = new Schema(
 {
-    id: Number,
+    id: {
+        type: Number,
+        index: true,
+      },
     name: String,
     description: String,
     modified: Date,

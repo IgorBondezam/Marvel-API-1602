@@ -26,7 +26,7 @@ export class MarvelRepository{
     public async getCharactersById(id: number): Promise<Character>{
         return fetch(`${process.env.API_MARVEL_DEFAULT}/characters/${id}?${process.env.API_MARVEL_KEY}`)
         .then(response => response.json())
-        .then(json => json.data.results.map(p => new Character(p.id, p.name, p.description, p.modified, p.resourceURI, p.urls, p.thumbnail, false)));
+        .then(json => json.data?.results?.map(p => new Character(p.id, p.name, p.description, p.modified, p.resourceURI, p.urls, p.thumbnail, false)));
     }
 
     public async getComicsById(id: number): Promise<Comic>{

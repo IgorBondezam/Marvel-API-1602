@@ -3,7 +3,7 @@ import { CharacterReq } from "../dto/character-req.dto";
 import { CharacterRes } from "../dto/character-res.dto";
 
 class CharacterConverter{
-    public characterToResponse(entity: Character){
+    public characterToResponse(entity: Character): CharacterRes{
         if(!entity){
             return null;
         }
@@ -24,12 +24,11 @@ class CharacterConverter{
             return null;
         }
         let character: Character = new Character;
-        character.id = req.id;
         character.description = req.description;
         character.modified = req.modified;
         character.name = req.name;
         character.resourceURI = req.resourceURI;
-        character.thumbnail = req.thumbnail?.path + req.thumbnail?.path;
+        character.thumbnail = `${req.thumbnail?.path}.${req.thumbnail?.extension}`;
         character.urls = req.urls;
         character.editable = true;
         return character; 
