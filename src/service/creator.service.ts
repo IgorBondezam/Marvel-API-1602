@@ -1,41 +1,35 @@
 import creatorSchema from '../schema/creator.schema'
 import {validarId} from './validators/type-id.validator';
+import {Creator} from "../domain/creator.domain";
+import creatorRepository from "../repository/creator.repository";
+import {CreatorRes} from "../dto/creator-res.dto";
+import creatorConverter from "../converter/creator.converter";
 
 export class CreatorService {
-    public async create(creator: any) {
-        return await creatorSchema.create(creator);
+    public async create(creator: Creator): Promise<CreatorRes> {
+        const createdCreator: Creator = await creatorSchema.create(creator);
+        return creatorConverter.creatorToResponse(createdCreator);
     }
 
-    public async findById(id: number) {
+    public async findById(id: number): Promise<CreatorRes> {
         validarId(id);
-        return creatorSchema.findOne({id: id});
+        return creatorConverter.creatorToResponse(await creatorRepository.findById(id));
     }
 
-    public async findAll() {
-        return creatorSchema.find();
+    public async findAll(): Promise<CreatorRes[]> {
+        return (await creatorSchema.find()).map(c => creatorConverter.creatorToResponse(c));
     }
 
 
-    public async update(id: string, creator: any) {
-        const updatedCreator = await creatorSchema.findOneAndUpdate({ id: id }, {
-            firstName: creator.firstName,
-            middleName: creator.middleName,
-            lastName: creator.lastName,
-            suffix: creator.suffix,
-            fullName: creator.fullName,
-            resourceURI: creator.resourceURI,
-            urls: creator.urls,
-            thumbnail: creator.thumbnail,
-            editable: true
-          }, { new: true });
-
-        return updatedCreator;
+    public async update(id: number, creator: Creator): Promise<CreatorRes> {
+        validarId(id);
+        return creatorConverter.creatorToResponse(await creatorRepository.updateById(id, creator));
     }
 
-    public async delete(id: string): Promise<any> {
-        const creatorDeleted = await creatorSchema.findOneAndDelete({ id: id });
-        return creatorDeleted;
-
+    public async delete(id: number): Promise<string> {
+        validarId(id);
+        await creatorRepository.deleteById(id);
+        return "Creator Removido com sucesso!";
     }
 }
 

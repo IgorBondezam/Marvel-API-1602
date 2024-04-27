@@ -3,7 +3,7 @@ import characterSchema from "../schema/character.schema";
 
 class CharacterRepository{
     public async updateCharacterById(id: number, updateValue: Character): Promise<Character>{
-        return <Character> await characterSchema.updateOne({ id: id}, updateValue);
+        return <Character> await characterSchema.findOneAndUpdate({ id: id}, updateValue);
     }
 
     public async findById(id: number): Promise<Character>{
@@ -11,7 +11,7 @@ class CharacterRepository{
     }
 
     public async deleteById(id: number): Promise<void>{
-        characterSchema.deleteOne({id: id});
+        let deleted = await characterSchema.findOneAndDelete({id: id});
     }
 }
 

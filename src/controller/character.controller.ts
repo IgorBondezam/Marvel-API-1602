@@ -33,7 +33,7 @@ class CharacterController{
 
     public async updateCharacter(req: Request, res: Response): Promise<void>{
         try{
-            res.json(await characterService.update(Number(req.params.id), 
+            res.json(await characterService.update(Number(req.params.id),
                 characterConverter.requestToCharacter(req.body)));
             res.status(200).send();
         }catch(err){
@@ -44,7 +44,7 @@ class CharacterController{
     public async deleteCharacter(req: Request, res: Response): Promise<void>{
         try{
             res.json(await characterService.delete(Number(req.params.id)));
-            res.status(204).send();
+            res.status(204);
         } catch(err){
             res.status(400).json({'error': err.toString()}).send();
         }

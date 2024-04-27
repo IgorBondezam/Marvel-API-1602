@@ -21,10 +21,10 @@ routes.put('/characters/:id', characterController.updateCharacter);
 routes.delete('/characters/:id', characterController.deleteCharacter);
 
 routes.get('/creators', creatorController.findAllCreators);
-routes.get('/creators/:id', creatorController.findByIdCreator);
-routes.post('/creators', creatorController.createCreator);
-routes.put('/creators/:id', creatorController.updateCreator);
-routes.delete('/creators/:id', creatorController.deleteCreator);
+routes.get('/creator/:id', creatorController.findByIdCreator);
+routes.post('/creator', creatorController.createCreator);
+routes.put('/creator/:id', creatorController.updateCreator);
+routes.delete('/creator/:id', creatorController.deleteCreator);
 
 routes.get('/comics', ComicController.findAllComics);
 routes.get('/comic/:id', ComicController.findByIdComic);

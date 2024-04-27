@@ -37,9 +37,8 @@ class App {
 
     private async createIdentifiers() {
         const identifier = await identifierRepository.getIdentifiers();
-        console.log(identifier);
         if(identifier === null) {
-            console.log(await identifierRepository.create());
+            await identifierRepository.create()
         }
     }
 }
