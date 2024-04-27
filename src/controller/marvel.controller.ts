@@ -64,6 +64,11 @@ class MarvelController{
         res.json(await marvelService.getComicsCheapThan3HalfDollars());
         return res;
     }
+
+    public async getCharactersModifiedAfter2010(req: Request, res: Response): Promise<Response>{
+        res.json(await marvelService.getCharactersModifiedAfter2010());
+        return res;
+    }
 }
 
 export default new MarvelController();

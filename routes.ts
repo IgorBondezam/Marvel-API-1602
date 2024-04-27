@@ -8,8 +8,9 @@ const routes = Router()
 routes.get('/characters/marvel', marvelController.getCharacters);
 routes.get('/creators/marvel', marvelController.getCreators);
 routes.get('/comics/marvel', marvelController.getComics);
-routes.get('/character/marvel/:id', marvelController.getCharactersById);
-routes.get('/creator/marvel/:id', marvelController.getCreatorsById);
+routes.get('/characters/marvel/modifiedAfter2010', marvelController.getCharactersModifiedAfter2010);
+routes.get('/characters/marvel/:id', marvelController.getCharactersById);
+routes.get('/creators/marvel/:id', marvelController.getCreatorsById);
 routes.get('/comics/marvel/digital', marvelController.getDigitalComics);
 routes.get('/comics/marvel/cheap', marvelController.getCheapComics);
 routes.get('/comics/marvel/character/:id', marvelController.getCharactersByComic);

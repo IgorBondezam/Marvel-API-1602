@@ -60,6 +60,12 @@ export class MarvelRepository{
         .then(json => json.data?.results?.map(p => new Comic(p.id, p.digitalId, p.title, p.issueNumber, p.variantDescription, p.description, p.modified, p.isbn, p.upc, p.diamondCode, p.ean, p.issn, p.format, p.textObjects, p.resourceURI, p.urls, p.dates, p.prices, p.thumbnail, p.images, false)) ?? []);
     }
 
+    public async getCharactersModifiedAfter2010(): Promise<Comic[]>{
+        return fetch(`${process.env.API_MARVEL_DEFAULT}/characters?modifiedSince=2010-01-01&series=489&${process.env.API_MARVEL_KEY}`)
+        .then( response => response.json())
+        .then(json => json.data?.results?.map(p => new Character(p.id, p.name, p.description, p.modified, p.resourceURI, p.urls, p.thumbnail, false)) ?? {});
+    }
+
 }
 
 export default new MarvelRepository();

@@ -37,6 +37,7 @@ class CharacterService{
         await characterRepository.deleteById(id);
         return 'Character Removido com Sucesso';
     }
+    
 }
 
 export default new CharacterService();

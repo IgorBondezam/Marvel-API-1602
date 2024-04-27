@@ -53,6 +53,10 @@ class MarvelService{
         const comics = await this.marvelRepository.getComics();
         return comics.filter(c => c.prices.find(p => p.type === "printPrice").price <= 3.5);
     }
+
+    public async getCharactersModifiedAfter2010(): Promise<Character[]> {
+        return await this.marvelRepository.getCharactersModifiedAfter2010();
+    }
 }
 
 export default new MarvelService();
