@@ -11,7 +11,7 @@ class ComicRepository{
     }
 
     public async deleteById(id: number): Promise<void>{
-        comicSchema.deleteOne({id: id});
+        await comicSchema.deleteOne({id: id});
     }
 }
 

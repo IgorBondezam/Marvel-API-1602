@@ -11,7 +11,7 @@ class CharacterRepository{
     }
 
     public async deleteById(id: number): Promise<void>{
-        let deleted = await characterSchema.findOneAndDelete({id: id});
+        await characterSchema.findOneAndDelete({id: id});
     }
 }
 

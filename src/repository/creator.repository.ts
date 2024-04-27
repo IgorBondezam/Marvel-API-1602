@@ -13,7 +13,7 @@ export class CreatorRepository{
     }
 
     public async deleteById(id: number): Promise<void>{
-        creatorSchema.deleteOne({id: id});
+        await creatorSchema.deleteOne({id: id});
     }
 }
 
