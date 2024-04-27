@@ -1,5 +1,4 @@
 import { Schema, model } from 'mongoose';
-import identifiersSchema from './identifiers.schema';
 import identifierRepository from '../repository/identifier.repository';
 
 const creatorSchema = new Schema(

@@ -22,22 +22,23 @@ export class CreatorService {
 
     public async update(id: string, creator: any) {
         const updatedCreator = await creatorSchema.findOneAndUpdate({ id: id }, {
-            id: id,
-            name: creator.name,
-            description: creator.description,
-            modified: new Date(),
+            firstName: creator.firstName,
+            middleName: creator.middleName,
+            lastName: creator.lastName,
+            suffix: creator.suffix,
+            fullName: creator.fullName,
             resourceURI: creator.resourceURI,
             urls: creator.urls,
-            thumbnail: creator.thumbnail
-        }, { new: true });
+            thumbnail: creator.thumbnail,
+            editable: true
+          }, { new: true });
 
         return updatedCreator;
     }
 
     public async delete(id: string): Promise<any> {
-        const creator = await creatorSchema.findById(id);
-        await creatorSchema.findOneAndDelete({ id: id });
-        return creator;
+        const creatorDeleted = await creatorSchema.findOneAndDelete({ id: id });
+        return creatorDeleted;
     }
 }
 

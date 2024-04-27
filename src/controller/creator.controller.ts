@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import creatorService from "../service/creator.service";
 
-class CharacterController{
+class CreatorController{
 
     helloWorld(req: Request, res: Response){
         return res.json('hello World');
@@ -28,10 +28,11 @@ class CharacterController{
     }
 
     public async deleteCreator(req: Request, res: Response): Promise<void>{
-        res.json(await creatorService.delete(req.params.id));
+        const creator = await creatorService.delete(req.params.id)
+        res.json(await creator);
         res.status(204).send();
     }
 
 }
 
-export default new CharacterController();
+export default new CreatorController();
