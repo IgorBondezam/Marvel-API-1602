@@ -2,7 +2,10 @@ import { Schema, model } from 'mongoose';
 
 const creatorSchema = new Schema(
     {
-        id: Number,
+        id: {
+          type: Number,
+          index: true,
+        },
         firstName: String,
         middleName: String,
         lastName: String,

@@ -9,7 +9,7 @@ export class CreatorService {
     }
 
     public async findById(id: string) {
-        const findedCreator = await creatorSchema.findById(id);
+        const findedCreator = await creatorSchema.findOne({ id: id });
         return findedCreator;
     }
 
@@ -19,7 +19,7 @@ export class CreatorService {
     }
 
     public async update(id: string, creator: any) {
-        const updatedCreator = await creatorSchema.findByIdAndUpdate(id, {
+        const updatedCreator = await creatorSchema.findOneAndUpdate({ id: id }, {
             id: id,
             name: creator.name,
             description: creator.description,
@@ -34,7 +34,7 @@ export class CreatorService {
 
     public async delete(id: string): Promise<any> {
         const creator = await creatorSchema.findById(id);
-        await creatorSchema.findByIdAndDelete(id);
+        await creatorSchema.findOneAndDelete({ id: id });
         return creator;
     }
 }
