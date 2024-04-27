@@ -33,9 +33,7 @@ export class CreatorService {
     }
 
     public async delete(id: string): Promise<any> {
-        const creatorDeleted = await creatorSchema.findOneAndDelete({ id: id });
-        return creatorDeleted;
-
+        await creatorSchema.findOneAndDelete({ id: id });
     }
 }
 

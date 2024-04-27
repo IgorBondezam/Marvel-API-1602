@@ -8,28 +8,60 @@ class CreatorController{
     }
 
     public async findAllCreators(req: Request, res: Response): Promise<void>{
-        res.json(await creatorService.findAll());
-        res.status(200).send();
+        try{
+            res.json(await creatorService.findAll());
+            res.status(200).send();
+        }
+        catch(err){
+            res.json("Error finding creators");
+            res.status(400).send();
+        }
+            
     }
 
     public async findByIdCreator(req: Request, res: Response): Promise<void>{
-        res.json(await creatorService.findById(Number(req.params.id)));
-        res.status(200).send();
+        try{
+            res.json(await creatorService.findById(Number(req.params.id)));
+            res.status(200).send();
+        }
+        catch(err){
+            res.json("Error finding creator");
+            res.status(400).send();
+        }
     }
 
     public async createCreator(req: Request, res: Response): Promise<void>{
-        res.json(await creatorService.create(req.body))
-        res.status(201).send();
+        try{
+            res.json(await creatorService.create(req.body))
+            res.status(201).send();
+        }
+        catch(err){
+            res.json("Error creating creator")
+            res.status(400).send();
+        }
     }
 
     public async updateCreator(req: Request, res: Response): Promise<void>{
-        res.json(await creatorService.update(Number(req.params.id), req.body));
-        res.status(200).send();
+        try{
+            res.json(await creatorService.update(req.params.id, req.body));
+            res.status(200).send();
+        }
+        catch(err){
+            res.json("Error updating creator");
+            res.status(400).send();
+        }
     }
 
     public async deleteCreator(req: Request, res: Response): Promise<void>{
-        res.json(await creatorService.delete(Number(req.params.id)));
-        res.status(204).send();
+        try{
+            await creatorService.delete(req.params.id)
+            res.json("Creator deleted successfully");
+            res.status(204).send();
+        }
+        catch(err){
+            res.json("Error deleting creator");
+            res.status(400).send();
+        }
     }
 
 }

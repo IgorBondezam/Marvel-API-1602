@@ -37,8 +37,31 @@ class MarvelController{
         return res;
     }
 
+    public async getDigitalComics(req: Request, res: Response): Promise<Response>{
+        res.json(comicConverter.comicsToResponse(
+            await marvelService.getDigitalComics()));
+        return res;
+    }
+
+    public async getCharactersByComic(req: Request, res: Response): Promise<Response>{
+        res.json(comicConverter.comicsToResponse(
+            await marvelService.getCharactersByComic(Number.parseInt(req.params.id))));
+        return res;
+    }
+    
+    public async getComicsByCreator(req: Request, res: Response): Promise<Response>{
+        res.json(comicConverter.comicsToResponse(
+            await marvelService.getComicsByCreator(Number.parseInt(req.params.id))));
+        return res;
+    }
+
     public async getCreatorsById(req: Request, res: Response): Promise<Response>{
         res.json(await marvelService.getCreatorsById(Number.parseInt(req.params.id)));
+        return res;
+    }
+
+    public async getCheapComics(req: Request, res: Response): Promise<Response>{
+        res.json(await marvelService.getComicsCheapThan3HalfDollars());
         return res;
     }
 }

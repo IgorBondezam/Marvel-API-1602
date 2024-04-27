@@ -20,6 +20,7 @@ const creatorSchema = new Schema(
             url: String
           }
         >,
+        
         thumbnail: {
           path: String,
           extension: String

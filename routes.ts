@@ -5,14 +5,16 @@ import creatorController from './src/controller/creator.controller'
 import ComicController from "./src/controller/comic.controller";
 
 const routes = Router()
-routes.get('/health-check');
-routes.get('/hello', marvelController.helloWorld);
 routes.get('/characters/marvel', marvelController.getCharacters);
 routes.get('/creators/marvel', marvelController.getCreators);
 routes.get('/comics/marvel', marvelController.getComics);
 routes.get('/character/marvel/:id', marvelController.getCharactersById);
 routes.get('/creator/marvel/:id', marvelController.getCreatorsById);
-routes.get('/comic/marvel/:id', marvelController.getComicsById);
+routes.get('/comics/marvel/digital', marvelController.getDigitalComics);
+routes.get('/comics/marvel/cheap', marvelController.getCheapComics);
+routes.get('/comics/marvel/character/:id', marvelController.getCharactersByComic);
+routes.get('/comics/marvel/creator/:id', marvelController.getComicsByCreator);
+routes.get('/comics/marvel/:id', marvelController.getComicsById);
 
 routes.get('/characters', characterController.findAllCharacters);
 routes.get('/characters/:id', characterController.findByIdCharacter);

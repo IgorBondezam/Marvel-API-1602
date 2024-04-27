@@ -36,6 +36,23 @@ class MarvelService{
         validarId(id);
         return await this.marvelRepository.getCreatorsById(id);
     }
+
+    public async getDigitalComics(): Promise<Comic[]>{
+        return await this.marvelRepository.getGetDigitalComic();
+    }
+
+    public async getCharactersByComic(id: number): Promise<Comic[]>{
+        return await this.marvelRepository.getCharactersByComic(id);
+    }
+
+    public async getComicsByCreator(id: number): Promise<Comic[]>{
+        return await this.marvelRepository.getComicsByCreator(id);
+    }
+
+    public async getComicsCheapThan3HalfDollars(): Promise<Comic[]>{
+        const comics = await this.marvelRepository.getComics();
+        return comics.filter(c => c.prices.find(p => p.type === "printPrice").price <= 3.5);
+    }
 }
 
 export default new MarvelService();

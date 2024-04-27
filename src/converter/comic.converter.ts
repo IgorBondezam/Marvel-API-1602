@@ -3,6 +3,42 @@ import { ComicReq } from '../dto/comic-req.dto';
 import { ComicRes } from '../dto/comic-res.dto';
 
 class ComicConverter{
+    public comicsToResponse(entity: Array<Comic>): Array<ComicRes>{
+        if(!entity){
+            return null;
+        }
+        const resList = [];
+
+        entity.forEach(element => {
+            let res: ComicRes = new ComicRes;
+            res.id = element.id;
+            res.digitalId = element.digitalId;
+            res.title = element.title;
+            res.issueNumber = element.issueNumber;
+            res.variantDescription = element.variantDescription;
+            res.description = element.description;
+            res.modified = element.modified;
+            res.isbn = element.isbn;
+            res.upc = element.upc;
+            res.diamondCode = element.diamondCode;
+            res.ean = element.ean;
+            res.issn = element.issn;
+            res.format = element.format;
+            res.textObjects = element.textObjects;
+            res.resourceURI = element.resourceURI;
+            res.urls = element.urls;
+            res.dates = element.dates;
+            res.prices = element.prices;
+            res.thumbnail = element.thumbnail;
+            res.images = element.images;
+            res.editable = element.editable;
+            resList.push(res);
+        });
+
+        
+        return resList; 
+    }
+
     public comicToResponse(entity: Comic): ComicRes{
         if(!entity){
             return null;
