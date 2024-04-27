@@ -1,24 +1,20 @@
-import { Creator } from '../domain/creator.domain';
 import creatorSchema from '../schema/creator.schema'
-import { validarId } from './validators/type-id.validator';
+import {validarId} from './validators/type-id.validator';
 
 export class CreatorService {
     public async create(creator: any) {
-        const createdCreator = await creatorSchema.create(creator);
-        
-        return createdCreator;
+        return await creatorSchema.create(creator);
     }
 
-    public async findById(id: string) {
-        const findedCreator = await creatorSchema.findOne({ id: id });
+    public async findById(id: number) {
         validarId(id);
-        return findedCreator;
+        return creatorSchema.findOne({id: id});
     }
 
     public async findAll() {
-        const findedCreators = await creatorSchema.find();
-        return findedCreators;
+        return creatorSchema.find();
     }
+
 
     public async update(id: string, creator: any) {
         const updatedCreator = await creatorSchema.findOneAndUpdate({ id: id }, {
@@ -39,6 +35,7 @@ export class CreatorService {
     public async delete(id: string): Promise<any> {
         const creatorDeleted = await creatorSchema.findOneAndDelete({ id: id });
         return creatorDeleted;
+
     }
 }
 

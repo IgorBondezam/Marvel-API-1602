@@ -13,7 +13,7 @@ class CreatorController{
     }
 
     public async findByIdCreator(req: Request, res: Response): Promise<void>{
-        res.json(await creatorService.findById(req.params.id));
+        res.json(await creatorService.findById(Number(req.params.id)));
         res.status(200).send();
     }
 
@@ -23,13 +23,12 @@ class CreatorController{
     }
 
     public async updateCreator(req: Request, res: Response): Promise<void>{
-        res.json(await creatorService.update(req.params.id, req.body));
+        res.json(await creatorService.update(Number(req.params.id), req.body));
         res.status(200).send();
     }
 
     public async deleteCreator(req: Request, res: Response): Promise<void>{
-        const creator = await creatorService.delete(req.params.id)
-        res.json(await creator);
+        res.json(await creatorService.delete(Number(req.params.id)));
         res.status(204).send();
     }
 

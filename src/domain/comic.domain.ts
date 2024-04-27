@@ -62,8 +62,8 @@ export class Comic{
         this.urls = urls;
         this.dates = dates;
         this.prices = prices;
-        this.thumbnail = thumbnail.path + thumbnail.extension;
-        this.images = images.map(i => `${i.path}.${i.extension}`);
+        this.thumbnail = `${thumbnail?.path}.${thumbnail?.extension}`;
+        this.images = images?.map(i => `${i?.path}.${i?.extension}`);
         this.editable = editable;
     }
     

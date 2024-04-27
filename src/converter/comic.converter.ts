@@ -1,9 +1,9 @@
-import { Comic } from './../domain/comic.domain';
+import { Comic } from '../domain/comic.domain';
 import { ComicReq } from '../dto/comic-req.dto';
 import { ComicRes } from '../dto/comic-res.dto';
 
 class ComicConverter{
-    public comicToResponse(entity: Comic){
+    public comicToResponse(entity: Comic): ComicRes{
         if(!entity){
             return null;
         }
@@ -36,8 +36,8 @@ class ComicConverter{
         if(!req){
             return null;
         }
+        console.log(req);
         let comic: Comic = new Comic;
-        comic.id = req.id;
         comic.digitalId = req.digitalId;
         comic.title = req.title;
         comic.issueNumber = req.issueNumber;
@@ -55,10 +55,10 @@ class ComicConverter{
         comic.urls = req.urls;
         comic.dates = req.dates;
         comic.prices = req.prices;
-        comic.thumbnail = req.thumbnail?.path + req.thumbnail?.extension;
+        comic.thumbnail = `${req.thumbnail?.path}.${req.thumbnail?.extension}`;
         comic.images = req.images?.map(i => `${i.path}.${i.extension}`);
         comic.editable = req.editable;
-        return comic; 
+        return comic;
     }
 }
 

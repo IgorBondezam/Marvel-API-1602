@@ -1,5 +1,4 @@
 export class ComicReq {
-    public id: number;
     public digitalId: number;
     public title: string;
     public issueNumber: number;

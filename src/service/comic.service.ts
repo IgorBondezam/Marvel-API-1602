@@ -1,58 +1,32 @@
-import { Comic } from '../domain/comic.domain';
-import  comicSchema from '../schema/comic.schema';
-import { validarId } from './validators/type-id.validator';
+import {Comic} from '../domain/comic.domain';
+import comicSchema from '../schema/comic.schema';
+import {validarId} from './validators/type-id.validator';
+import comicRepository from "../repository/comic.repository";
 
 class ComicService{
 
-    public async create(comic: Comic) {
-        const createdComic = await comicSchema.create(comic);
-        return createdComic;
+    public async create(comic: Comic): Promise<Comic> {
+        return await comicSchema.create(comic);
     }
 
-    public async findById(id: string) {
+    public async findById(id: number): Promise<Comic> {
         validarId(id);
-        const findedComic = await comicSchema.findById(id);
-        return findedComic;
+        return comicRepository.findById(id);
     }
 
     public async findAll(): Promise<Comic[]> {
-        const findedComics = await comicSchema.find();
-        return findedComics;
+        return comicSchema.find();
     }
 
-    public async update(id: string, comic: Comic) {
+    public async update(id: number, comic: Comic): Promise<Comic> {
         validarId(id);
         comic.editable = true;
-        const updatedComic = await comicSchema.findByIdAndUpdate(id, {
-            id: id,
-            digitalId: comic.digitalId,
-            title: comic.title,
-            issueNumber: comic.issueNumber,
-            variantDescription: comic.variantDescription,
-            description: comic.description,
-            modified: new Date(),
-            isbn: comic.isbn,
-            upc: comic.upc,
-            diamondCode: comic.diamondCode,
-            ean: comic.ean,
-            issn: comic.issn,
-            format: comic.format,
-            textObjects: comic.textObjects,
-            resourceURI: comic.resourceURI,
-            urls: comic.urls,
-            dates: comic.dates,
-            prices: comic.prices,
-            thumbnail: comic.thumbnail,
-            images: comic.images,
-            editable: comic.editable
-        }, { new: true });
-
-        return updatedComic;
+        return comicRepository.updateComicById(id, comic);
     }
 
-    public async delete(id: string) {
+    public async delete(id: number): Promise<String> {
         validarId(id);
-        await comicSchema.findByIdAndDelete(id);
+        await comicRepository.deleteById(id);
         return 'Comic Removido com Sucesso';
     }
 }

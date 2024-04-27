@@ -2,45 +2,38 @@ import mongoose from 'mongoose';
 import { Character } from '../domain/character.domain';
 import characterSchema from '../schema/character.schema'
 import { validarId } from './validators/type-id.validator';
+import characterRepository from '../repository/character.repository';
+import { CharacterRes } from '../dto/character-res.dto';
+import characterConverter from '../converter/character.converter';
 
 class CharacterService{
 
-    public async create(character: Character): Promise<Character> {
+    public async create(character: Character): Promise<CharacterRes> {
         const createdCharacter: Character = await characterSchema.create(character);
-        return createdCharacter;
+        return characterConverter.characterToResponse(createdCharacter);
     }
 
-    public async findById(id: string): Promise<Character>{
+    public async findById(id: number): Promise<CharacterRes>{
         validarId(id);
-        const findedCharacter: Character = await characterSchema.findById(id);
-        return findedCharacter;
+        const findedCharacter: Character = await characterRepository.findById(id);
+        return characterConverter.characterToResponse(findedCharacter);
     }
 
-    public async findAll(): Promise<Character[]> {
+    public async findAll(): Promise<CharacterRes[]> {
         const findedCharacters = await characterSchema.find();
-        return findedCharacters;
+        return findedCharacters.map(c => characterConverter.characterToResponse(c));
     }
 
-    public async update(id: string, character: Character) {
+    public async update(id: number, character: Character) : Promise<CharacterRes>{
         validarId(id);
         character.editable = true;
-        const updatedCharacter = await characterSchema.findByIdAndUpdate(id, {
-            id: id,
-            name: character.name,
-            description: character.description,
-            modified: new Date(),
-            resourceURI: character.resourceURI,
-            urls: character.urls,
-            thumbnail: character.thumbnail,
-            editable: character.editable
-        }, { new: true });
-
-        return updatedCharacter;
+        const updatedCharacter = characterRepository.updateCharacterById(id, character);
+        return characterConverter.characterToResponse(await updatedCharacter);
     }
 
-    public async delete(id: string) {
+    public async delete(id: number): Promise<string> {
         validarId(id);
-        await characterSchema.findByIdAndDelete(id);
+        await characterRepository.deleteById(id);
         return 'Character Removido com Sucesso';
     }
 }
