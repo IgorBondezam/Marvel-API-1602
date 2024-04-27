@@ -1,24 +1,28 @@
+import mongoose from 'mongoose';
 import { Character } from '../domain/character.domain';
 import characterSchema from '../schema/character.schema'
+import { validarId } from './validators/type-id.validator';
 
 class CharacterService{
 
-    async create(character: Character) {
-        const createdCharacter = await characterSchema.create(character);
+    public async create(character: Character): Promise<Character> {
+        const createdCharacter: Character = await characterSchema.create(character);
         return createdCharacter;
     }
 
-    public async findById(id: string) {
-        const findedCharacter = await characterSchema.findById(id);
+    public async findById(id: string): Promise<Character>{
+        validarId(id);
+        const findedCharacter: Character = await characterSchema.findById(id);
         return findedCharacter;
     }
 
-    public async findAll() {
+    public async findAll(): Promise<Character[]> {
         const findedCharacters = await characterSchema.find();
         return findedCharacters;
     }
 
-    async update(id: string, character: Character) {
+    public async update(id: string, character: Character) {
+        validarId(id);
         character.editable = true;
         const updatedCharacter = await characterSchema.findByIdAndUpdate(id, {
             id: id,
@@ -27,15 +31,17 @@ class CharacterService{
             modified: new Date(),
             resourceURI: character.resourceURI,
             urls: character.urls,
-            thumbnail: character.thumbnail
+            thumbnail: character.thumbnail,
+            editable: character.editable
         }, { new: true });
 
         return updatedCharacter;
     }
 
     public async delete(id: string) {
+        validarId(id);
         await characterSchema.findByIdAndDelete(id);
-        return 'Livro Removido com Sucesso';
+        return 'Character Removido com Sucesso';
     }
 }
 

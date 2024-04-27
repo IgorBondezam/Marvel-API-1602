@@ -1,5 +1,6 @@
 import { Creator } from '../domain/creator.domain';
 import creatorSchema from '../schema/creator.schema'
+import { validarId } from './validators/type-id.validator';
 
 export class CreatorService {
     public async create(creator: any) {
@@ -10,6 +11,7 @@ export class CreatorService {
 
     public async findById(id: string) {
         const findedCreator = await creatorSchema.findOne({ id: id });
+        validarId(id);
         return findedCreator;
     }
 
@@ -19,6 +21,7 @@ export class CreatorService {
     }
 
     public async update(id: string, creator: any) {
+        validarId(id);
         const updatedCreator = await creatorSchema.findOneAndUpdate({ id: id }, {
             id: id,
             name: creator.name,

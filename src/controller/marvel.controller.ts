@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import marvelService from "../service/marvel.service";
+import characterConverter from "../converter/character.converter";
+import comicConverter from "../converter/comic.converter";
 
 class MarvelController{
     public async helloWorld(req: Request, res: Response){
@@ -7,17 +9,36 @@ class MarvelController{
     }
 
     public async getCharacters(req: Request, res: Response): Promise<Response>{
-        res.json(await marvelService.getCharacters())
+        res.json((await marvelService.getCharacters()).map(c =>
+             characterConverter.characterToResponse(c)));
         return res;
     }
 
     public async getComics(req: Request, res: Response): Promise<Response>{
-        res.json(await marvelService.getComics())
+        res.json((await marvelService.getComics()).map(c =>
+            comicConverter.comicToResponse(c)));
         return res;
     }
 
     public async getCreators(req: Request, res: Response): Promise<Response>{
-        res.json(await marvelService.getCreators())
+        res.json(await marvelService.getCreators());
+        return res;
+    }
+
+    public async getCharactersById(req: Request, res: Response): Promise<Response>{
+        res.json(characterConverter.characterToResponse(
+            await marvelService.getCharactersById(Number.parseInt(req.params.id))));
+        return res;
+    }
+
+    public async getComicsById(req: Request, res: Response): Promise<Response>{
+        res.json(comicConverter.comicToResponse(
+            await marvelService.getComicsById(Number.parseInt(req.params.id))));
+        return res;
+    }
+
+    public async getCreatorsById(req: Request, res: Response): Promise<Response>{
+        res.json(await marvelService.getCreatorsById(Number.parseInt(req.params.id)));
         return res;
     }
 }

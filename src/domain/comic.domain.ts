@@ -1,48 +1,48 @@
 export class Comic{
-    id: number;
-    digitalId: number;
-    title: string;
-    issueNumber: number;
-    variantDescription: string;
-    description: string;
-    modified: Date;
-    isbn: string;
-    upc: string;
-    diamondCode: string;
-    ean: string;
-    issn: string;
-    format: string;
-    textObjects: { type: string, language: string, text: string }[];
-    resourceURI: string;
-    urls: { type: string, url: string }[];
-    dates: { type: string, date: Date }[];
-    prices: { type: string, price: number }[];
-    thumbnail: { path: string, extension: string };
-    images: string[];
-    editable: boolean;
+    id?: number;
+    digitalId?: number;
+    title?: string;
+    issueNumber?: number;
+    variantDescription?: string;
+    description?: string;
+    modified?: Date;
+    isbn?: string;
+    upc?: string;
+    diamondCode?: string;
+    ean?: string;
+    issn?: string;
+    format?: string;
+    textObjects?: { type?: string, language?: string, text?: string }[];
+    resourceURI?: string;
+    urls?: { type?: string, url?: string }[];
+    dates?: { type?: string, date?: Date }[];
+    prices?: { type?: string, price?: number }[];
+    thumbnail?: string;
+    images?: string[];
+    editable?: boolean;
 
     constructor(
-        id: number,
-        digitalId: number,
-        title: string,
-        issueNumber: number,
-        variantDescription: string,
-        description: string,
-        modified: Date,
-        isbn: string,
-        upc: string,
-        diamondCode: string,
-        ean: string,
-        issn: string,
-        format: string,
-        textObjects: { type: string, language: string, text: string }[],
-        resourceURI: string,
-        urls: { type: string, url: string }[],
-        dates: { type: string, date: Date }[],
-        prices: { type: string, price: number }[],
-        thumbnail: { path: string, extension: string },
-        images: { path: string, extension: string }[],
-        editable: boolean
+        id?: number,
+        digitalId?: number,
+        title?: string,
+        issueNumber?: number,
+        variantDescription?: string,
+        description?: string,
+        modified?: Date,
+        isbn?: string,
+        upc?: string,
+        diamondCode?: string,
+        ean?: string,
+        issn?: string,
+        format?: string,
+        textObjects?: { type?: string, language?: string, text?: string }[],
+        resourceURI?: string,
+        urls?: { type?: string, url?: string }[],
+        dates?: { type?: string, date?: Date }[],
+        prices?: { type?: string, price?: number }[],
+        thumbnail?: { path?: string, extension?: string },
+        images?: { path?: string, extension?: string }[],
+        editable?: boolean
     ) {
         this.id = id;
         this.digitalId = digitalId;
@@ -62,7 +62,7 @@ export class Comic{
         this.urls = urls;
         this.dates = dates;
         this.prices = prices;
-        this.thumbnail = thumbnail;
+        this.thumbnail = thumbnail.path + thumbnail.extension;
         this.images = images.map(i => `${i.path}.${i.extension}`);
         this.editable = editable;
     }

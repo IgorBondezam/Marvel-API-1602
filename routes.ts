@@ -9,6 +9,9 @@ routes.get('/hello', marvelController.helloWorld);
 routes.get('/characters/marvel', marvelController.getCharacters);
 routes.get('/creators/marvel', marvelController.getCreators);
 routes.get('/comics/marvel', marvelController.getComics);
+routes.get('/characters/marvel/:id', marvelController.getCharactersById);
+routes.get('/creators/marvel/:id', marvelController.getCreatorsById);
+routes.get('/comics/marvel/:id', marvelController.getComicsById);
 
 routes.get('/characters', characterController.findAllCharacters);
 routes.get('/characters/:id', characterController.findByIdCharacter);
