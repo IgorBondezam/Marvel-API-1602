@@ -2,26 +2,28 @@ import {Comic} from '../domain/comic.domain';
 import comicSchema from '../schema/comic.schema';
 import {validarId} from './validators/type-id.validator';
 import comicRepository from "../repository/comic.repository";
+import comicConverter from "../converter/comic.converter";
+import {ComicRes} from "../dto/comic-res.dto";
 
 class ComicService{
 
-    public async create(comic: Comic): Promise<Comic> {
-        return await comicSchema.create(comic);
+    public async create(comic: Comic): Promise<ComicRes> {
+        return comicConverter.comicToResponse(await comicSchema.create(comic));
     }
 
-    public async findById(id: number): Promise<Comic> {
+    public async findById(id: number): Promise<ComicRes> {
         validarId(id);
-        return comicRepository.findById(id);
+        return comicConverter.comicToResponse(await comicRepository.findById(id));
     }
 
-    public async findAll(): Promise<Comic[]> {
-        return comicSchema.find();
+    public async findAll(): Promise<ComicRes[]> {
+        return (await comicSchema.find()).map(c => comicConverter.comicToResponse(c));
     }
 
-    public async update(id: number, comic: Comic): Promise<Comic> {
+    public async update(id: number, comic: Comic): Promise<ComicRes> {
         validarId(id);
         comic.editable = true;
-        return comicRepository.updateComicById(id, comic);
+        return comicConverter.comicToResponse(await comicRepository.updateComicById(id, comic));
     }
 
     public async delete(id: number): Promise<String> {

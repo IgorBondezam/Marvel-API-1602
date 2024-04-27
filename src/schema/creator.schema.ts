@@ -3,10 +3,7 @@ import identifierRepository from '../repository/identifier.repository';
 
 const creatorSchema = new Schema(
     {
-        id: {
-          type: Number,
-          index: true,
-        },
+        id: Number,
         firstName: String,
         middleName: String,
         lastName: String,
@@ -20,11 +17,7 @@ const creatorSchema = new Schema(
             url: String
           }
         >,
-        
-        thumbnail: {
-          path: String,
-          extension: String
-        },
+        thumbnail: String,
         editable: Boolean
       }, {
     timestamps: true

@@ -4,7 +4,7 @@ import creatorSchema from "../schema/creator.schema";
 export class CreatorRepository{
 
     public async updateById(id: number, updateValue: Creator): Promise<Creator>{
-        await creatorSchema.updateOne({ id: id }, updateValue);
+        await creatorSchema.findOneAndUpdate({ id: id }, updateValue);
         return this.findById(id);
     }
 
@@ -13,7 +13,7 @@ export class CreatorRepository{
     }
 
     public async deleteById(id: number): Promise<void>{
-        creatorSchema.deleteOne({id: id});
+        await creatorSchema.deleteOne({id: id});
     }
 }
 

@@ -3,7 +3,7 @@ import comicSchema from "../schema/comic.schema";
 
 class ComicRepository{
     public async updateComicById(id: number, updateValue: Comic): Promise<Comic>{
-        return <Comic> await comicSchema.updateOne({ id: id}, updateValue);
+        return <Comic> await comicSchema.findOneAndUpdate({ id: id}, updateValue);
     }
 
     public async findById(id: number): Promise<Comic>{
@@ -11,7 +11,7 @@ class ComicRepository{
     }
 
     public async deleteById(id: number): Promise<void>{
-        comicSchema.deleteOne({id: id});
+        await comicSchema.deleteOne({id: id});
     }
 }
 

@@ -18,5 +18,4 @@ export class ComicReq {
     public prices: { type: string, price: number }[];
     public thumbnail: { path: string, extension: string };
     public images: { path :string, extension: string }[];
-    public editable: boolean;
 }

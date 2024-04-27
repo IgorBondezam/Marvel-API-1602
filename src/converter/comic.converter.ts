@@ -72,7 +72,6 @@ class ComicConverter{
         if(!req){
             return null;
         }
-        console.log(req);
         let comic: Comic = new Comic;
         comic.digitalId = req.digitalId;
         comic.title = req.title;
@@ -93,7 +92,6 @@ class ComicConverter{
         comic.prices = req.prices;
         comic.thumbnail = `${req.thumbnail?.path}.${req.thumbnail?.extension}`;
         comic.images = req.images?.map(i => `${i.path}.${i.extension}`);
-        comic.editable = req.editable;
         return comic;
     }
 }
