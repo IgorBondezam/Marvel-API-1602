@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import identifierRepository from '../repository/identifier.repository';
 
 const comicSchema = new Schema(
     {
@@ -52,5 +53,12 @@ const comicSchema = new Schema(
     }, {
     timestamps: true
 });
+
+comicSchema.pre('save', async function(next) {
+    const identifiers = await identifierRepository.incrementComicId();
+    this.id = identifiers.comicId;
+    next();
+  });
+  
 
 export default model('Comic', comicSchema);

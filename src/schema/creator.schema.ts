@@ -1,4 +1,6 @@
 import { Schema, model } from 'mongoose';
+import identifiersSchema from './identifiers.schema';
+import identifierRepository from '../repository/identifier.repository';
 
 const creatorSchema = new Schema(
     {
@@ -26,6 +28,12 @@ const creatorSchema = new Schema(
         editable: Boolean
       }, {
     timestamps: true
+});
+
+creatorSchema.pre('save', async function(next) {
+  const identifiers = await identifierRepository.incrementCreatorId();
+  this.id = identifiers.creatorId;
+  next();
 });
 
 export default model('Creator', creatorSchema);
