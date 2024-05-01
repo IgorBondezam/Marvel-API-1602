@@ -15,7 +15,6 @@
   "dependencies": {
     "express": "^4.19.2",
     "mongoose": "^8.3.2",
-    "mongoose-auto-increment": "^5.0.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0"
   },
@@ -28,7 +27,8 @@
   },
   "scripts": {
     "start": "docker-compose up -d && ts-node ./main",
-    "test": "jest"
+    "test": "docker-compose down && docker-compose up -d && jest",
+    "cannon": "npx autocannon -c 500 -d 20 -w 10 --renderStatusCodes --latency --debug --warmup [ -c 1 -d 2 ] localhost:3000/creators/marvel"
   },
   "keywords": [],
   "author": "",

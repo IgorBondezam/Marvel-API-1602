@@ -18,10 +18,10 @@ routes.get('/comics/marvel/creator/:id', marvelController.getComicsByCreator);
 routes.get('/comics/marvel/:id', marvelController.getComicsById);
 
 routes.get('/characters', characterController.findAllCharacters);
-routes.get('/characters/:id', characterController.findByIdCharacter);
-routes.post('/characters', characterController.createCharacter);
-routes.put('/characters/:id', characterController.updateCharacter);
-routes.delete('/characters/:id', characterController.deleteCharacter);
+routes.get('/character/:id', characterController.findByIdCharacter);
+routes.post('/character', characterController.createCharacter);
+routes.put('/character/:id', characterController.updateCharacter);
+routes.delete('/character/:id', characterController.deleteCharacter);
 
 routes.get('/creators', creatorController.findAllCreators);
 routes.get('/creator/:id', creatorController.findByIdCreator);

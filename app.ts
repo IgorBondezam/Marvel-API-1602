@@ -2,8 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
 import { routes } from './routes';
-import identifiersSchema from './src/schema/identifiers.schema';
-import identifierRepository from './src/repository/identifier.repository';
+import {createIdentifiers} from "./src/utils/configuration/db-configuration.utils";
 
 class App {
     public express: express.Application;
@@ -22,10 +21,13 @@ class App {
 
     public async database() {
         try {
+            if(process.env.NODE_ENV === 'test'){
+                return;
+            }
             mongoose.set("strictQuery", true);
             await mongoose.connect(`mongodb://${process.env.URL_DATABASE}`);
             console.log("Connect database sucess");
-            await this.createIdentifiers();
+            await createIdentifiers();
         } catch (error) {
             console.error('Cannot connect to database, error:', error);
         }
@@ -33,13 +35,6 @@ class App {
 
     public routes(): void {
         this.express.use(routes);
-    }
-
-    private async createIdentifiers() {
-        const identifier = await identifierRepository.getIdentifiers();
-        if(identifier === null) {
-            await identifierRepository.create()
-        }
     }
 }
 
