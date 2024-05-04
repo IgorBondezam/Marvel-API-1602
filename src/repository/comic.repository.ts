@@ -3,7 +3,8 @@ import comicSchema from "../schema/comic.schema";
 
 class ComicRepository{
     public async updateComicById(id: number, updateValue: Comic): Promise<Comic>{
-        return <Comic> await comicSchema.findOneAndUpdate({ id: id}, updateValue);
+        await comicSchema.updateOne({ id: id}, updateValue);
+        return await this.findById(id);
     }
 
     public async findById(id: number): Promise<Comic>{

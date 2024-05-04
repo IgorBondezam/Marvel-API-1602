@@ -3,7 +3,8 @@ import characterSchema from "../schema/character.schema";
 
 class CharacterRepository{
     public async updateCharacterById(id: number, updateValue: Character): Promise<Character>{
-        return <Character> await characterSchema.findOneAndUpdate({ id: id}, updateValue);
+        await characterSchema.updateOne({ id: id}, updateValue);
+        return await this.findById(id);
     }
 
     public async findById(id: number): Promise<Character>{

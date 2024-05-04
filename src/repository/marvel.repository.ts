@@ -42,7 +42,6 @@ export class MarvelRepository{
     }
 
     public async getGetDigitalComic(): Promise<Comic[]>{
-        console.log(`${process.env.API_MARVEL_DEFAULT}/comics?hasDigitalIssue=true&series=489&${process.env.API_MARVEL_KEY}`)
         return fetch(`${process.env.API_MARVEL_DEFAULT}/comics?hasDigitalIssue=true&series=489&${process.env.API_MARVEL_KEY}`)
         .then(response => response.json())
         .then(json => json.data?.results?.map(p => new Comic(p.id, p.digitalId, p.title, p.issueNumber, p.variantDescription, p.description, p.modified, p.isbn, p.upc, p.diamondCode, p.ean, p.issn, p.format, p.textObjects, p.resourceURI, p.urls, p.dates, p.prices, p.thumbnail, p.images, false)) ?? []);

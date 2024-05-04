@@ -4,8 +4,8 @@ import creatorSchema from "../schema/creator.schema";
 export class CreatorRepository{
 
     public async updateById(id: number, updateValue: Creator): Promise<Creator>{
-        await creatorSchema.findOneAndUpdate({ id: id }, updateValue);
-        return this.findById(id);
+        await creatorSchema.updateOne({ id: id }, updateValue);
+        return await this.findById(id);
     }
 
     public async findById(id: number): Promise<Creator>{
