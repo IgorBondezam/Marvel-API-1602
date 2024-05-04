@@ -49,8 +49,7 @@ class CreatorController{
 
     public async deleteCreator(req: Request, res: Response): Promise<void>{
         try {
-            res.json(await creatorService.delete(Number(req.params.id)));
-            res.status(204);
+            res.status(204).json(await creatorService.delete(Number(req.params.id)));
         } catch(err){
             res.status(400).json({'error': err.toString()}).send();
         }

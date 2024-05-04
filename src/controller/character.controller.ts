@@ -45,7 +45,6 @@ class CharacterController{
     public async deleteCharacter(req: Request, res: Response): Promise<void>{
         try{
             res.status(204).json(await characterService.delete(Number(req.params.id)));
-            res.send();
         } catch(err){
             res.status(400).json({'error': err.toString()}).send();
         }
