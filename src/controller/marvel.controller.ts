@@ -69,6 +69,11 @@ class MarvelController{
         res.json(await marvelService.getCharactersModifiedAfter2010());
         return res;
     }
+
+    public async populate(req: Request, res: Response): Promise<Response>{
+        await marvelService.populate();
+        return res.json('Populate done');
+    }
 }
 
 export default new MarvelController();

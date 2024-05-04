@@ -2,10 +2,15 @@ import { Character } from "../domain/character.domain";
 import { Comic } from "../domain/comic.domain";
 import { Creator } from "../domain/creator.domain";
 import marvelRepository, { MarvelRepository } from "../repository/marvel.repository";
+import characterSchema from "../schema/character.schema";
+import comicSchema from "../schema/comic.schema";
+import creatorSchema from "../schema/creator.schema";
+
 import { validarId } from "./validators/type-id.validator";
 
 class MarvelService{
     private readonly marvelRepository: MarvelRepository;
+
     constructor(){
         this.marvelRepository = marvelRepository;
     }
@@ -56,6 +61,15 @@ class MarvelService{
 
     public async getCharactersModifiedAfter2010(): Promise<Character[]> {
         return await this.marvelRepository.getCharactersModifiedAfter2010();
+    }
+
+    public async populate(): Promise<void>{
+        const creators = await this.marvelRepository.getCreators();
+        const characters = await this.marvelRepository.getCharacters();
+        const comics = await this.marvelRepository.getComics();
+        creators.forEach(async (c) => await creatorSchema.create(c));
+        characters.forEach(async (c) => await characterSchema.create(c));
+        comics.forEach(async (c) => await comicSchema.create(c));
     }
 }
 

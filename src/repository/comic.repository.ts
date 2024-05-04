@@ -1,7 +1,7 @@
 import {Comic} from "../domain/comic.domain";
 import comicSchema from "../schema/comic.schema";
 
-class ComicRepository{
+export class ComicRepository{
     public async updateComicById(id: number, updateValue: Comic): Promise<Comic>{
         await comicSchema.updateOne({ id: id}, updateValue);
         return await this.findById(id);

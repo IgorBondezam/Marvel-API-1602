@@ -3,7 +3,7 @@ import { Comic } from "../domain/comic.domain";
 import { Creator } from "../domain/creator.domain";
 
 export class MarvelRepository{
-    
+    public 
 
     public async getCharacters(): Promise<Character[]>{
         return fetch(`${process.env.API_MARVEL_DEFAULT}/characters?series=489&${process.env.API_MARVEL_KEY}`)
