@@ -68,7 +68,7 @@ Para inicializar a aplicação, sigua os passos:
 2. Use o comando `npm start`;
 3. Acesse a documentação em [http://localhost:3000/api-docs]()
 4. Ou entre no link e instale os links da api no POSTMAN;
-   5. https://drive.google.com/file/d/1Ft3ra7hkn4Q5_diyXDudS_ykll8XDf2H/view?usp=sharing
+   - https://drive.google.com/file/d/1Ft3ra7hkn4Q5_diyXDudS_ykll8XDf2H/view?usp=sharing
 
 ---
 ### Testes
@@ -85,6 +85,6 @@ Para a execução dos testes execute o passo a passo abaixo:
 
 **Fique a vontade e use a API para criar seus Criadores, Quadrinhos e Personagens favoritos. Cuidado para não criar um super personagem e acabar perdendo ele para a vilãnia!!**
 
-# EU SOU O GROOT!!
+# ☘ EU SOU O GROOT ☘
 
 ---
