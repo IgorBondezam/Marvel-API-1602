@@ -8,7 +8,7 @@ import {expect} from "@jest/globals";
 import {notDeepStrictEqual} from "assert";
 
 
-describe('API (Usuarios, Tarefas, Categorias) Workflow', () => {
+describe('CRUD Creators', () => {
 
     beforeAll(async () => {
         await createTestDb();
@@ -413,5 +413,4 @@ describe('API (Usuarios, Tarefas, Categorias) Workflow', () => {
             deepStrictEqual(lista.length, 1);
         });
     });
-
 })

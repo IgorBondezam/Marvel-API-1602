@@ -28,7 +28,8 @@
   "scripts": {
     "start": "docker-compose up -d && ts-node ./main",
     "test": "docker-compose down && docker-compose up -d && jest",
-    "cannon": "npx autocannon -c 500 -d 20 -w 10 --renderStatusCodes --latency --debug --warmup [ -c 1 -d 2 ] localhost:3000/creators/marvel"
+    "cannon:server": "set NODE_ENV=cannon&& docker-compose up -d && ts-node ./main",
+    "cannon:start": "npx autocannon -c 500 -d 20 -w 10 --renderStatusCodes --latency --debug --warmup [ -c 1 -d 2 ] localhost:3000/characters"
   },
   "keywords": [],
   "author": "",

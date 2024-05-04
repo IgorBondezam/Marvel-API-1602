@@ -8,7 +8,7 @@ import { notDeepStrictEqual } from "assert";
 import { ComicRes } from "../src/dto/comic-res.dto";
 
 
-describe('API (Usuarios, Tarefas, Categorias) Workflow', () => {
+describe('CRUD Comics', () => {
 
     beforeAll(async () => {
         await createTestDb();
@@ -845,5 +845,4 @@ describe('API (Usuarios, Tarefas, Categorias) Workflow', () => {
             deepStrictEqual(lista.length, 1);
         });
     });
-
 })

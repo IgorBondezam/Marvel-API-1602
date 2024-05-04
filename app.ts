@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
 import { routes } from './routes';
 import {createIdentifiers} from "./src/utils/configuration/db-configuration.utils";
+import {startPopualtion} from "./tests/autocannon.canon";
 
 class App {
     public express: express.Application;
@@ -22,6 +23,10 @@ class App {
     public async database() {
         try {
             if(process.env.NODE_ENV === 'test'){
+                return;
+            }
+            if(process.env.NODE_ENV === 'cannon'){
+                await startPopualtion();
                 return;
             }
             mongoose.set("strictQuery", true);
