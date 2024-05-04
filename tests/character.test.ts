@@ -3,7 +3,7 @@ import {CharacterReq} from "../src/dto/character-req.dto";
 import * as request from 'supertest'
 import app from "../app";
 import {CharacterRes} from "../src/dto/character-res.dto";
-import {createTestDb, resetDataBase} from "../src/utils/configuration/db-configuration.utils";
+import {createTestDb, downDatabase, resetDataBase} from "../src/utils/configuration/db-configuration.utils";
 import {expect} from "@jest/globals";
 import {notDeepStrictEqual} from "assert";
 
@@ -17,6 +17,11 @@ describe('API (Usuarios, Tarefas, Categorias) Workflow', () => {
     beforeEach(async () => {
         await resetDataBase()
     })
+
+    afterAll(async () => {
+        await downDatabase()
+    })
+
     async function getAllCharacter() {
         return await request.default(app).get('/characters');
     }
@@ -266,10 +271,10 @@ describe('API (Usuarios, Tarefas, Categorias) Workflow', () => {
             }
 
             deepStrictEqual(createdList.length, 2);
-            await deleteCharacterById(1);
+            const deleted = await deleteCharacterById(1);
 
-            const deleted = await getAllCharacter();
-            const lista: CharacterRes[] = deleted.body;
+            const getAll = await getAllCharacter();
+            const lista: CharacterRes[] = getAll.body;
             deepStrictEqual(deleted.statusCode, 204)
             deepStrictEqual(lista.length, 1);
         });

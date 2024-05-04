@@ -40,6 +40,7 @@ class CreatorConverter{
         creator.resourceURI = req.resourceURI;
         creator.urls = req.urls;
         creator.thumbnail = `${req.thumbnail?.path}.${req.thumbnail?.extension}`;
+        creator.editable = true;
         return creator;
     }
 }
