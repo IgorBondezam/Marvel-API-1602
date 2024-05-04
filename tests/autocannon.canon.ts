@@ -4,7 +4,7 @@ import {createTestDb} from "../src/utils/configuration/db-configuration.utils";
 
 export async function startPopualtion(){
     await createTestDb();
-    for(let i = 0; i<200; i++){
+    for(let i = 0; i<100; i++){
         await createCharacter();
     }
     console.log("Database configured - Use npm cannon:start to execute the test!");

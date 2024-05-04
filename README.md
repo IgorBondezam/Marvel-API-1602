@@ -1,6 +1,3 @@
-Id da série - 489
-Nome série 1602 (2003 - 2004)
-
 Avaliação - Sagas do Universo Marvel
 
 O Universo Marvel, repleto de super-heróis, vilões e histórias épicas, tem sido uma fonte inesgotável de entretenimento e inspiração. Com a Marvel API, você tem acesso a uma riqueza de informações sobre este universo, desde personagens até as sagas que definem eras.
@@ -47,3 +44,47 @@ Clareza da documentação e facilidade de uso da API.
 
 - Notas Finais
 Esta atividade não apenas aprofunda seu entendimento do Universo Marvel, mas também desenvolve habilidades cruciais em design de API, modelagem de dados, e testes de software. Boa sorte, e que a força dos super-heróis esteja com você!
+
+
+---
+1602 (2003 - 2004)
+-
+
+#### Trabalho realizado por:
+
+- Igor Bondezam França - 22012574-2
+- Matheus Zauza Maschietto - 22013969-2
+- Bruno Batista Carrião Moreno - 24284115-2
+
+---
+### Start
+
+Para instalar as dependências do projeto, execute:
+
+`npm install`
+
+Para inicializar a aplicação, sigua os passos:
+1. Suba o serviço do Docker;
+2. Use o comando `npm start`;
+3. Acesse a documentação em [http://localhost:3000/api-docs]()
+4. Ou entre no link e instale os links da api no POSTMAN;
+   5. https://drive.google.com/file/d/1Ft3ra7hkn4Q5_diyXDudS_ykll8XDf2H/view?usp=sharing
+
+---
+### Testes
+
+Para a execução dos testes execute o passo a passo abaixo:
+
+1. Suba o serviço do Docker;
+2. Use o comando `npm test`
+3. Para realizar o teste de performace
+4. Execute primeiramente o comando `npm run cannon:server`
+5. Após a confirmação no console execute o comando `npm run cannon:start`
+
+---
+
+**Fique a vontade e use a API para criar seus Criadores, Quadrinhos e Personagens favoritos. Cuidado para não criar um super personagem e acabar perdendo ele para a vilãnia!!**
+
+# EU SOU O GROOT!!
+
+---
