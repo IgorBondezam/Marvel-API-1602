@@ -92,6 +92,7 @@ class ComicConverter{
         comic.prices = req.prices;
         comic.thumbnail = `${req.thumbnail?.path}.${req.thumbnail?.extension}`;
         comic.images = req.images?.map(i => `${i.path}.${i.extension}`);
+        comic.editable = true;
         return comic;
     }
 }

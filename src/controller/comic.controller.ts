@@ -8,8 +8,8 @@ class ComicController{
 
     public async findAllComics(req: Request, res: Response): Promise<void>{
         try{
-            res.json(await comicService.findAll());
-            res.status(200).send();
+            res.status(200).json(await comicService.findAll());
+            res.send();
         } catch(err){
             res.status(400).json({'error': err.toString()}).send();
         }
@@ -18,8 +18,8 @@ class ComicController{
     public async findByIdComic(req: Request, res: Response): Promise<void>{
         try{
             const findedComic: Comic = await comicService.findById(Number(req.params.id));
-            res.json(comicConverter.comicToResponse(findedComic));
-            res.status(200).send();
+            res.status(200).json(comicConverter.comicToResponse(findedComic));
+            res.send();
         } catch(err){
             res.status(400).json({'error': err.toString()}).send();
         }
@@ -28,8 +28,8 @@ class ComicController{
     public async createComic(req: Request, res: Response): Promise<void>{
         try{
             const createdComic: Comic = await comicService.create(comicConverter.requestToComic(req.body));
-            res.json(comicConverter.comicToResponse(createdComic));
-            res.status(201).send();
+            res.status(201).json(comicConverter.comicToResponse(createdComic));
+            res.send();
         } catch(err){
             res.status(400).json({'error': err.toString()}).send();
         }
@@ -39,8 +39,8 @@ class ComicController{
         try{
             const updatedComic: Comic = await comicService.update(Number(req.params.id),
                 comicConverter.requestToComic(req.body))
-            res.json(comicConverter.comicToResponse(updatedComic));
-            res.status(200).send();
+            res.status(200).json(comicConverter.comicToResponse(updatedComic));
+            res.send();
         } catch(err){
             res.status(400).json({'error': err.toString()}).send();
         }
@@ -48,8 +48,7 @@ class ComicController{
 
     public async deleteComic(req: Request, res: Response): Promise<void>{
         try{
-            res.json(await comicService.delete(Number(req.params.id)));
-            res.status(204);
+            res.status(204).json(await comicService.delete(Number(req.params.id)));
         } catch(err){
             res.status(400).json({'error': err.toString()}).send();
         }
